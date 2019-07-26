@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <link rel="stylesheet" href="../scc/css.css">
+    <link rel="stylesheet" href="../css/issues.css">
+
+    <title>发布</title>
+</head>
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.contenr {
+    width: 1200px;
+    margin: 0 auto;
+}
+    .issue-text {
+        width: 1200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="herders">
+            <div class="contenr h-top">
+                <div class="h-box">
+                    <p id="said"> </p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="contenr h-nav ">
+                <ul class="n-ul">
+                    {{if user}}
+                    <span class="blog-name">{{user.username}}的博客</span>
+                    {{else}}
+                    <span class="blog-name">博客</span>
+                    {{/if}}
+                    <li><a href="/" class="n-new">首页</a></li>
+                    <li><a href="/Archive">存档</a></li>
+                    <li><a href="/label">标签</a></li>
+                    {{if user}}
+                    <li><a href="/issue">发布</a></li>
+                    {{else}}
+                    <li><a href="/login">发布</a></li>
+                    {{/if}}
+                </ul>
+                <div class="n-login">
+                        <span>
+                                <form action="/s" method="get"><input class="search" name="name" type="text" placeholder="搜索"></form>
+                            </span>
+                    {{if user}}
+                    <span><a href="/personal">{{user.username}}</a> | <a href="/getout">退出登录</a></span>
+                    {{else}}
+                    <span><a href="/login">登录</a> | <a href="/signup">注册</a></span>
+                    {{/if}}
+                </div>
+
+            </div>
+        </nav>
+
+
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="contenr">
+        <form action="/issue" method="post">
+            <p>发布</p>
+            <label>标题</label><br>
+            <input type="text" name="title" required placeholder="内容标题"><br>
+            <label>标签</label><br>
+            <input type="text" name="label" required> <input name="label" type="text"> <input name="label"
+                type="text"><br>
+            <label>内容</label><br>
+            <textarea name="text" class="issue-text" required placeholder="说出你的故事..." ></textarea><br>
+            <input type="submit" value="发布">
+        </form>
+    </div>
+</body>
+<script></script>
+<script src="/js/mn.js"></script>
+<script src="/js/index.js"></script>
+</html>

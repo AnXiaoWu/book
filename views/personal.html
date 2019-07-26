@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <title>个人信息</title>
+</head>
+<style>
+    .addportrait {
+        width: 80px;
+        height: 80px;
+        position: relative;
+    }
+
+    .addportrait img {
+        width: 80px;
+        height: 80px;
+    }
+    .painter{
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 80px;
+        text-align: center;
+        display: none;
+        background-color: #00000030;
+    }
+    .painter:hover{
+        display: block;
+    }
+</style>
+
+<body>
+    
+
+        <h1>个人信息管理</h1>
+     
+            <label for="">头像:</label>
+            <div class="addportrait">
+                <img src="{{user.headerurl}}" alt="">
+                <a class="painter" href="/painter/{{user.username}}">编辑头像</a>
+            </div>
+            <a href="/painter/{{user.username}}">编辑头像</a><br>
+     
+        <form action="/personal" method="POST"></form>
+        <label for="">账号:<input type="text" name="username" readonly value="{{data.username}}"></label><br>
+        <label for="">年龄:<input type="text" name="age" value="{{data.age}}"></label><br>
+        <label class="sexs"><span>姓别:</span>
+            <input type="radio" checked name="sex" {{data.sex=='男' ? checked : '' }} value="男">男
+            <input type="radio" name="sex" {{data.sex == '女' ? checked : '' }} value="女">女
+
+        </label><br>
+        <label for="">Email:</label>
+        <input type="text" name="email" value="{{data.email}}"><br>
+        <label for="">个人介绍:</label><br>
+        <textarea name="introduce" id="" cols="30" rows="10" placeholder="说说你自己把....">{{data.introduce}}</textarea><br>
+        <!-- <p>可选</p>
+        <label for="">旧密码:<input type="passoword" placeholder="现在的密码"></label><br>
+        <label for="">新密码:<input type="passoword" placeholder="想设置的密码" ></label><br>
+        <label for="">确认密码:<input type="passowords" placeholder="再输入新密码"></label><br> -->
+        <input class="saves" type="submit" value="保存">
+
+
+
+
+
+
+
+    </form>
+</body>
+<script>
+
+    var saves = document.querySelector('.saves')
+
+    saves.onclick = function (ev) {
+        let r = confirm('确认修改?')
+        if (r == true) {
+            console.log('修改账号资料' + r);
+        } else {
+            ev.preventDefault()
+        }
+    }
+
+</script>
+
+</html>

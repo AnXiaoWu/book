@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <title>修改头像</title>
+</head>
+<style>
+    .addportrait {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+
+    .head-toux {
+        width: 200px;
+        height: 200px;
+    }
+    .painter{
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 200px;
+        text-align: center;
+        /* display: none; */
+        background-color: #00000030;
+    }
+
+</style>
+
+<body>
+    
+
+        <h1>个人头像修改</h1>
+        <form action="painter" method="POST" enctype="multipart/form-data">
+            <!-- <label for="">头像:</label> -->
+            <div class="addportrait">
+                <img class="head-toux" src="{{user.headerurl}}" alt="">
+                <span class="painter" >选择头像</span>
+            </div>
+            
+                <input type="file" name="headerimg" id="headerimg" accept="image/*" hidden>
+            <input type="submit" value="保存" /><br>
+      
+
+    </form>
+</body>
+<script>
+var headerimg = document.querySelector('#headerimg')
+
+headerimg.onclick=function(){
+    var file =this.files[0]
+document.querySelector('.hade-toux').src=URL.createObjectURL(file)
+}
+
+document.querySelector('.painter').onclick=function(){
+    headerimg.click()
+}
+
+
+</script>
+
+</html>

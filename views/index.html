@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <title></title>
+</head>
+
+<body>
+    <header>
+        <div class="herders">
+            <div class="contenr h-top">
+                <div class="h-box">
+                    <p id="said"> </p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="contenr h-nav ">
+                <ul class="n-ul">
+                    {{if user}}
+                    <span class="blog-name">{{user.username}}的博客</span>
+                    {{else}}
+                    <span class="blog-name">博客</span>
+                    {{/if}}
+                    <li><a href="/" class="n-new">首页</a></li>
+                    <li><a href="/Archive">存档</a></li>
+                    <li><a href="/label">标签</a></li>
+                    {{if user}}
+                    <li><a href="/issue">发布</a></li>
+                    {{else}}
+                    <li><a href="/login">发布</a></li>
+                    {{/if}}
+                </ul>
+                <div class="n-login">
+                    <span>
+                        <form action="/s" method="get"><input class="search" name="name" type="text" placeholder="搜索"></form>
+                    </span>
+                    {{if user}}
+                    <span class="yidenglu"> <img class="toux" src="/img/toux.jpg" alt=""> <a href="/personal/{{user._id}}">{{user.username}}</a> | <a href="/getout">退出登录</a></span>
+                    {{else}}
+                    <span><a href="/login">登录</a> | <a href="/signup">注册</a></span>
+                    {{/if}}
+                </div>
+
+            </div>
+        </nav>
+       
+    </header>
+
+    <main>
+        <div class="contenr m-main">
+            <div class="m-left">
+                <ul class="m-l-box">
+                    {{each msgs msg i}}
+
+                    <li>
+                        <p class="m-l-title"><a href="/issues/{{msg._id}}">{{msg.title}}</a></p>
+                        <div class="m-l-img">
+                            <div><a href="/issues/{{msg._id}}"><img src="../img/2.jpg" alt=""></a> </div>
+                            <div class="m-l-content">
+                                <a name="{{msg._id}}" href="/issues/{{msg._id}}">
+                                    <p class="m-l-con">{{msg.text}}</p>
+                                </a>
+                                <div class="m-l-bottom">
+                                    <label class="m-tag">标签:
+                                        {{each msg.label label }}
+                                        <a href="/s?name={{label}}">{{label}}</a>
+                                        {{/each}}
+                                    </label><br>
+                                    <label>作者:<a href="/z{{msg.author.username}}">{{msg.author.username}}</a></label>
+                                    <label>发布时间:{{msg.time.second}}</label>
+                                    <label>浏览量:<span>20</span></label>
+                                    <label>评论:<a name="{{msg._id}}"
+                                            href="/issues/{{msg._id}}"><span>{{msg.article.length}}</span>条</a></label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="m-right">
+                <ul class="m-right-box">
+                    <li>
+                        <p class="m-r-box-titel">关于</p>
+
+                    </li>
+                    <li>
+                        <p class="m-r-box-titel">文章</p>
+                      {{each msgs msg i}}
+                        &nbsp;<a href="/issues/{{msg._id}}">{{i+1}}.{{msg.title}}</a><br>
+                      {{/each}}
+                    </li>
+                    <li>
+                        <p class="m-r-box-titel">标签</p>
+                        {{each seat seat}}
+                        <a href="/s?name={{seat}}">{{seat}}</a>
+                      {{/each}}
+                    </li>
+                    <li>
+                        <p class="m-r-box-titel">关注我</p>
+                    </li>
+                </ul>
+            </div>
+
+            {{if msgs.length>0}}
+            {{include './page.html'}}
+            {{/if}}
+    
+
+        </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+
+
+
+</body>
+<script src="/js/mn.js"></script>
+<script src="/js/index.js"></script>
+</html>

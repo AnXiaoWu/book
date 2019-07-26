@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/issues.css">
+    <title>详情</title>
+</head>
+<style>
+</style>
+
+<body>
+    <header>
+        <div class="herders">
+            <div class="contenr h-top">
+                <div class="h-box">
+                    <p id="said"> </p>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="contenr h-nav ">
+                <ul class="n-ul">
+                    {{if user}}
+                    <span class="blog-name">{{user.username}}的博客</span>
+                    {{else}}
+                    <span class="blog-name">博客</span>
+                    {{/if}}
+                    <li><a href="/" class="n-new">首页</a></li>
+                    <li><a href="/Archive">存档</a></li>
+                    <li><a href="/label">标签</a></li>
+                    {{if user}}
+                    <li><a href="/issue">发布</a></li>
+                    {{else}}
+                    <li><a href="/login">发布</a></li>
+                    {{/if}}
+                </ul>
+                <div class="n-login">
+                        <span>
+                                <form action="/s" method="get"><input class="search" name="name" type="text" placeholder="搜索"></form>
+                            </span>
+                    {{if user}}
+                    <span><a href="/personal">{{user.username}}</a> | <a href="/getout">退出登录</a></span>
+                    {{else}}
+                    <span><a href="/login">登录</a> | <a href="/signup">注册</a></span>
+                    {{/if}}
+                </div>
+
+            </div>
+        </nav>
+
+
+
+    </header>
+
+    <main>
+        <div class="contenr m-main">
+            <div class="m-left">
+                <ul class="m-l-box">
+                    {{each data data i}}
+                    <li>
+                        <p class="m-l-title">{{data.title}}</p>
+                        <div class="m-l-bottom">
+                            <label>作者:<a href="/z{{data.author.username}}">{{data.author.username}}</a></label>
+                            <label>发布时间:{{data.time.second}}</label>
+                            <label>浏览量:<span>0</span></label>
+                            <label>评论:<a name="{{data._id}}"
+                                    href="/issues/{{data._id}}"><span>{{data.article.length}}</span>条</a></label>
+                            <label class="m-tag">标签:
+                                {{each data.label label}}
+                                <a href="/s?name={{label}}">{{label}}</a>
+                                {{/each}}
+                            </label><br>
+                        </div>
+                        <div class="m-l-content">
+                            <div class="m-l-img"><img src="../img/2.jpg" alt=""></div>
+                          
+                        </div>
+                     
+                                <p class="m-l-con">{{data.text}}</p>
+                                {{if user&&user.username == msg.username}}
+
+                                <p class="modifier"><a href="/add/{{data._id}}">编辑</a><a class="issues-delet"
+                                        href="/delt/{{data._id}}">删除</a></p>
+
+                                {{/if}}
+                            
+                    </li>
+                    <li>
+                        <div class="m-l-bottom">
+                            <label>作者:<a href="/z{{data.author.username}}">{{data.author.username}}</a></label>
+                            <label>发布时间:{{data.time.second}}</label>
+                            <label>浏览量:<span>0</span></label>
+                            <label>评论:<a name="{{data._id}}"
+                                    href="/issues/{{data._id}}"><span>{{data.article.length}}</span>条</a></label>
+                            <label class="m-tag">标签:
+                                {{each data.label label}}
+                                <a href="">{{label}}</a>
+                                {{/each}}
+                            </label><br>
+                        </div>
+                    </li>
+                    {{if user}}
+                    <li>
+                        <form action="/issues" method="post">
+                            <input type="text" name="_id" value="{{data._id}}" hidden>
+                            <textarea name="text" class="issues-text" required placeholder="你有什么想说的..."></textarea><br>
+                            <input type="submit" value="回复">
+                        </form>
+                    </li>
+                    {{else}}
+
+                    {{/if}}
+
+                    {{/each}}
+
+                    {{each data[0].article a i}}
+                    <li>
+                        <div class="issue-issue">
+                            <div class="issue-issue-img">
+                                <img src="../img/2.jpg" alt="">
+                            </div>
+                            <div class="">
+
+                                <p>{{a.text}}</p>
+                                <p class="replier"><span>{{a.username}}</span><span>{{a.time.second}}</span></p>
+
+                            </div>
+
+                        </div>
+
+
+                    </li>
+                    {{/each}}
+
+
+
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+
+
+</body>
+<script src="/js/mn.js"></script>
+<script>
+
+    var issuesDelet = document.getElementsByClassName('issues-delet')[0]
+
+    issuesDelet.onclick = function (ev) {
+        var r = confirm('确认删除?')
+        if (r == true) {
+            console.log(r);
+        } else {
+            ev.preventDefault()
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="macro">
+    <link rel="stylesheet" href="../scc/css.css">
+
+    <title>编辑</title>
+</head>
+<style>
+    .issue-text {
+        width: 1200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+
+    <div class="contenr">
+        <form action="/add" method="post">
+            <p>发布</p>
+            <label>标题</label><br>
+            <input type="text" name="title" readonly required placeholder="内容标题" value="{{data.title}}"><br>
+            <label>标签</label><br>
+            <input type="text" name="_id" value="{{data._id}}" hidden >
+            {{each data.label label i}}
+            <input type="text" name="label" value="{{label}}" readonly required> {{/each}} <br>
+            <label>内容</label><br>
+            <textarea name="text" class="issue-text" value="{{data.text}}" required placeholder="说出你的故事..." ></textarea><br>
+            <input type="submit" value="修改">
+        </form>
+    </div>
+</body>
+<script></script>
+
+</html>

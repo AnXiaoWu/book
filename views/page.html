@@ -1,0 +1,11 @@
+<section class="m-section">
+    <!-- <form action="/" method="GET"> -->
+    {{if page!=1}}
+    <a href="?page={{page-1}}" >上一页</a > 
+        {{/if}}
+    <span>{{page}}/{{allpage}}</span> 
+    {{if page!==allpage}}
+    <a href="?page={{page+1}}">下一页</a >
+        {{/if}}
+<!-- </form> -->
+</section>
