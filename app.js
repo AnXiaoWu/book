@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
+const favicon = require('serve-favicon');
+const path = require('path');
 var Article = require('./modules/db/article')  // 文章
 var User = require('./modules/db/user')  // 账号
 var Message = require('./modules/db/message')
@@ -46,7 +48,7 @@ app.use(function (req, res, next) {
 
 // 站点小图标
 
-app,use(favicon(path.join(__dirname,"public/img/")))
+app.use(favicon(path.join(__dirname,"public/img/ico.jpg")));
 
 // 导入路由模块   首页模块
 var indexRouter = require('./routes/index');

@@ -67,7 +67,7 @@
                         <div class="m-l-bottom">
                             <label>作者:<a href="/z{{data.author.username}}">{{data.author.username}}</a></label>
                             <label>发布时间:{{data.time.second}}</label>
-                            <label>浏览量:<span>0</span></label>
+                            <label>浏览量:<span>{{data.count}}</span></label>
                             <label>评论:<a name="{{data._id}}"
                                     href="/issues/{{data._id}}"><span>{{data.article.length}}</span>条</a></label>
                             <label class="m-tag">标签:
@@ -94,7 +94,7 @@
                         <div class="m-l-bottom">
                             <label>作者:<a href="/z{{data.author.username}}">{{data.author.username}}</a></label>
                             <label>发布时间:{{data.time.second}}</label>
-                            <label>浏览量:<span>0</span></label>
+                            <label>浏览量:<span>{{data.count}}</span></label>
                             <label>评论:<a name="{{data._id}}"
                                     href="/issues/{{data._id}}"><span>{{data.article.length}}</span>条</a></label>
                             <label class="m-tag">标签:

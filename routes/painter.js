@@ -1,5 +1,5 @@
 //更换头像
-var express = require('../node_modules/express');
+var express = require('express');
 
 var fs = require('fs')
 // 获取路由对象
@@ -13,7 +13,7 @@ router.get('/painter/:name', (req, res) => {
 
 var uploadpath = './public/img/'
 var headername;
-var stroage = multer.diskStorage({
+var stroage = multer.diskStorage({ //文件存储
     destination: function (req, file, cb) {
         cb(null, uploadpath);
     },
@@ -31,7 +31,7 @@ var stroage = multer.diskStorage({
         var ext = arr[arr.length - 1];
         // 姓名-时间.后缀
         headername = req.session.user.username + '-' + Date.now() + '.' + ext;
-        console.log(headername);
+        // console.log(headername);
         cb(null, headername);
     }
 });
@@ -51,11 +51,12 @@ var upload = multer({
             cb('只能上传图片', false);//拒绝这个文件
         }
     }
+   
 });
 
 
 router.post('/painter', upload.single('headerimg'), (req, res) => {
-    console.log('旧头像：' + req.session.user.headerurl);
+    // console.log('旧头像：' + req.session.user.headerurl);
     var headerurl = '/img/' + headername
 
     if (fs.existsSync(uploadpath + headername)) {

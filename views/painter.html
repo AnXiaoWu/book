@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'unsafe-eval'"> -->
     <meta name="author" content="macro">
     <title>修改头像</title>
 </head>
@@ -37,7 +38,7 @@
     
 
         <h1>个人头像修改</h1>
-        <form action="painter" method="POST" enctype="multipart/form-data">
+        <form action="/painter" method="post" enctype="multipart/form-data">
             <!-- <label for="">头像:</label> -->
             <div class="addportrait">
                 <img class="head-toux" src="{{user.headerurl}}" alt="">
@@ -50,24 +51,17 @@
     </form>
 </body>
 <script>
-var headerimg = document.querySelector('#headerimg')
+var headerimg = document.getElementById('headerimg')
 
 document.querySelector('.painter').onclick=function(){
 console.log('点击了选择头像');
     headerimg.click()
-    console.log(headerimg);
 }
-
-headerimg.onclick=function(){
+headerimg.onchange=function(){
     var file =this.files[0]
-    console.log('点击了------');
-    console.log(this.files);
- 
+ console.log(file);
 document.querySelector('.head-toux').src=URL.createObjectURL(file)
 }
-
-
-
 
 </script>
 

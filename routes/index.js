@@ -136,11 +136,6 @@ var data = JSON.parse(JSON.stringify(datas))
 
 
 
-
-
-
-
-
 //跳转 个人信息页 
 router.get('/personal/:name', (req, res) => {
     // console.log(req.params.name);

@@ -16,12 +16,21 @@ var tools = require('../modules/tools')
 var count = 0
 
 router.get('/issues/:_id', (req, res) => {
-  console.log(req.params);
-count += count
+
+//   console.log(req.params);
     Message
         .find()
         .populate('article').populate('author')
-        
+        .updateOne({_id:req.params._id},{
+            count:count+=1
+        },(err)=>{
+            if(err){
+
+            }else{
+                // console.log('访问量+1');
+            }
+        })
+      
         .find({ _id: req.params }, (err, datas) => {
             User.findOne({ _id: datas[0].author }, (err, msg) => {
                 if (err) {
@@ -36,7 +45,6 @@ count += count
 
         
         })
-        
       
 
 
