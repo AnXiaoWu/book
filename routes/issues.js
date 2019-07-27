@@ -13,8 +13,11 @@ var tools = require('../modules/tools')
 //博客详情
 
 
+var count = 0
+
 router.get('/issues/:_id', (req, res) => {
   console.log(req.params);
+count += count
     Message
         .find()
         .populate('article').populate('author')
@@ -30,6 +33,7 @@ router.get('/issues/:_id', (req, res) => {
                     res.render('issues.html', { msg, data ,nawyear:-1})
                 }
             })
+
         
         })
         

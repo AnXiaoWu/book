@@ -52,6 +52,7 @@ User.findOne({username:req.body.username},(err,data)=>{
                 introduce:'这个个很懒,什么都没有..',
                 age:'0',
                 sex:'男',
+                headerurl:'/img/toux.jpg'
             });
             user.save((err)=>{
                 res.redirect('/login');

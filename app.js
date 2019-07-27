@@ -44,6 +44,9 @@ app.use(function (req, res, next) {
     next();
 });
 
+// 站点小图标
+
+app,use(favicon(path.join(__dirname,"public/img/")))
 
 // 导入路由模块   首页模块
 var indexRouter = require('./routes/index');

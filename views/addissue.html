@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="author" content="macro">
-    <link rel="stylesheet" href="../scc/css.css">
+    <link rel="stylesheet" type="text/css" href="/scc/css.css">
 
     <title>编辑</title>
 </head>
@@ -29,7 +29,7 @@
             {{each data.label label i}}
             <input type="text" name="label" value="{{label}}" readonly required> {{/each}} <br>
             <label>内容</label><br>
-            <textarea name="text" class="issue-text" value="{{data.text}}" required placeholder="说出你的故事..." ></textarea><br>
+            <textarea name="text" class="issue-text" required placeholder="说出你的故事..." >{{data.text}}</textarea><br>
             <input type="submit" value="修改">
         </form>
     </div>

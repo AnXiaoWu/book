@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="author" content="macro">
-    <link rel="stylesheet" href="../css/css.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" type="text/css"  href="/css/css.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <title></title>
 </head>
 
@@ -42,7 +42,7 @@
                         <form action="/s" method="get"><input class="search" name="name" type="text" placeholder="搜索"></form>
                     </span>
                     {{if user}}
-                    <span class="yidenglu"> <img class="toux" src="/img/toux.jpg" alt=""> <a href="/personal/{{user._id}}">{{user.username}}</a> | <a href="/getout">退出登录</a></span>
+                    <span class="yidenglu"> <img class="toux" src="{{user.headerurl}}" alt=""> <a href="/personal/{{user._id}}">{{user.username}}</a> | <a href="/getout">退出登录</a></span>
                     {{else}}
                     <span><a href="/login">登录</a> | <a href="/signup">注册</a></span>
                     {{/if}}
@@ -62,7 +62,7 @@
                     <li>
                         <p class="m-l-title"><a href="/issues/{{msg._id}}">{{msg.title}}</a></p>
                         <div class="m-l-img">
-                            <div><a href="/issues/{{msg._id}}"><img src="../img/2.jpg" alt=""></a> </div>
+                            <div><a href="/issues/{{msg._id}}"><img src="../img/ " alt=""></a> </div>
                             <div class="m-l-content">
                                 <a name="{{msg._id}}" href="/issues/{{msg._id}}">
                                     <p class="m-l-con">{{msg.text}}</p>

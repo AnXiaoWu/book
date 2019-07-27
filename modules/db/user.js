@@ -7,6 +7,7 @@ var userSchema =new mongoose.Schema({
     introduce:String,
     age:String,
     sex:String,
+    headerurl:String
 
 })
 

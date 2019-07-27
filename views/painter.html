@@ -43,7 +43,6 @@
                 <img class="head-toux" src="{{user.headerurl}}" alt="">
                 <span class="painter" >选择头像</span>
             </div>
-            
                 <input type="file" name="headerimg" id="headerimg" accept="image/*" hidden>
             <input type="submit" value="保存" /><br>
       
@@ -53,14 +52,21 @@
 <script>
 var headerimg = document.querySelector('#headerimg')
 
-headerimg.onclick=function(){
-    var file =this.files[0]
-document.querySelector('.hade-toux').src=URL.createObjectURL(file)
+document.querySelector('.painter').onclick=function(){
+console.log('点击了选择头像');
+    headerimg.click()
+    console.log(headerimg);
 }
 
-document.querySelector('.painter').onclick=function(){
-    headerimg.click()
+headerimg.onclick=function(){
+    var file =this.files[0]
+    console.log('点击了------');
+    console.log(this.files);
+ 
+document.querySelector('.head-toux').src=URL.createObjectURL(file)
 }
+
+
 
 
 </script>

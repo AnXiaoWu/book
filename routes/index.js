@@ -8,13 +8,10 @@ var User = require('../modules/db/user')  // 账号
 var multer = require('multer')
 // router对象和app对象用法相似，可以添加多个接口
 router.get('/', (req, res) => {
-
     // 页数
     var page = (req.query.page || 1) * 1;
     // 一页几条
     var show_cuont = 5
-
-
     Message
         .find()
         .skip((page - 1) * show_cuont)
@@ -47,9 +44,10 @@ router.get('/', (req, res) => {
         });
     // console.log(req.session.user);
     // res.render('index.html');
+})
 
 
-});
+
 
 
 // s 搜索
